@@ -11,7 +11,7 @@ const port = 3000;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: 'https://inprocicainternational.com/' }));
+app.use(cors({ origin: 'https://inprocicainternational.com' }));
 
 const resend = new Resend(process.env.API_KEY_RESEND);
 
@@ -22,7 +22,7 @@ app.post('/send-email', async (req, res) => {
   try {
     // Using Resend to send email
     const response = await resend.emails.send({
-      from: 'Francisco Davila <noreply@inprocicainternational.com>',
+      from: 'Inprocica international <noreply@inprocicainternational.com>',
       to: 'luissanteliz22@gmail.com',
       subject: subject,
       html: `
@@ -35,7 +35,7 @@ app.post('/send-email', async (req, res) => {
           ${message}
         </div>
         <hr style="margin-top: 30px;">
-        <p style="font-size: 12px; color: #999;">Este mensaje fue enviado desde tu website inprocicainternational.com: <a href="https://inprocicainternational.com" target="_blank">inprocicainternational.com</a></p>
+        <p style="font-size: 12px; color: #999;">Este mensaje fue enviado desde tu website inprocicainternational.com</p>
       </div>
     `,
     });
