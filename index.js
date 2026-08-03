@@ -6,12 +6,17 @@ import { Resend } from 'resend';
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: 'https://inprocicainternational.com' }));
+app.use(cors({ 
+  origin: [
+    'https://inprocicainternational.com', 
+    'https://www.inprocicainternational.com'
+  ] 
+}));
 
 const resend = new Resend(process.env.API_KEY_RESEND);
 
@@ -50,5 +55,5 @@ app.post('/send-email', async (req, res) => {
 
 // Start server
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at port ${port}`);
 }); 
