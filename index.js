@@ -28,7 +28,7 @@ app.post('/send-email', async (req, res) => {
     // Using Resend to send email
     const response = await resend.emails.send({
       from: 'Inprocica international <noreply@inprocicainternational.com>',
-      to: 'inprocicainternational@gmail.com',
+      to: 'info@inprocicainternational.com',
       subject: subject,
       html: `
       <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
